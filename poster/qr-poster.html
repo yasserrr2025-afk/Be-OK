@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>لوحة قائمة الأسعار - مجمع دمتم بخير الطبي بالطائف</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body { width: 210mm; height: 297mm; margin: 0; }
+    body {
+      overflow: hidden;
+      color: #14372f;
+      background: #f8f5ec;
+      font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page {
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 17mm 13mm;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 13% 13%, rgba(202,216,144,.32) 0 26mm, transparent 26.2mm),
+        radial-gradient(circle at 87% 88%, rgba(200,166,103,.17) 0 32mm, transparent 32.2mm),
+        #f8f5ec;
+    }
+    .top-shape {
+      position: absolute;
+      top: -48mm;
+      left: -25mm;
+      width: 260mm;
+      height: 91mm;
+      border-radius: 0 0 50% 50%;
+      background: #14372f;
+      transform: rotate(-2deg);
+    }
+    .ring, .ring::before, .ring::after {
+      position: absolute;
+      border: .35mm solid rgba(255,255,255,.12);
+      border-radius: 50%;
+      content: "";
+    }
+    .ring { top: -6mm; left: 8mm; width: 42mm; height: 42mm; }
+    .ring::before { inset: 5mm; }
+    .ring::after { inset: 11mm; }
+    .brand {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5mm;
+      color: #fff;
+    }
+    .logo-wrap {
+      width: 24mm;
+      height: 24mm;
+      padding: 2.4mm;
+      border-radius: 7mm;
+      background: #fff;
+      box-shadow: 0 4mm 10mm rgba(0,0,0,.18);
+      transform: rotate(-2deg);
+    }
+    .logo-wrap img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 5mm; }
+    .brand-copy { text-align: right; }
+    .brand-copy strong { display: block; font-size: 5.3mm; line-height: 1.25; }
+    .brand-copy span { display: block; margin-top: 1.4mm; color: #dfe8c0; font-size: 2.5mm; letter-spacing: .7mm; direction: ltr; }
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 15mm;
+      text-align: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 2.5mm;
+      color: #9a793a;
+      font-size: 3mm;
+      font-weight: 700;
+      letter-spacing: .25mm;
+    }
+    .eyebrow::before, .eyebrow::after { content: ""; width: 10mm; height: .35mm; background: #c8a667; }
+    h1 {
+      margin: 4mm 0 2.5mm;
+      font-size: 12mm;
+      line-height: 1.15;
+      letter-spacing: -.6mm;
+    }
+    h1 span { color: #a17f3d; font-weight: 500; }
+    .subtitle { margin: 0; color: #68756f; font-size: 4.15mm; line-height: 1.8; }
+    .qr-card {
+      position: relative;
+      width: 112mm;
+      margin-top: 7mm;
+      padding: 7mm 8mm 6mm;
+      border: .4mm solid rgba(20,55,47,.10);
+      border-radius: 10mm;
+      background: #fff;
+      box-shadow: 0 6mm 17mm rgba(20,55,47,.12);
+    }
+    .qr-card::before, .qr-card::after {
+      content: "";
+      position: absolute;
+      width: 11mm;
+      height: 11mm;
+      border-color: #c8a667;
+      border-style: solid;
+    }
+    .qr-card::before { top: 4mm; right: 4mm; border-width: .8mm .8mm 0 0; border-radius: 0 3mm 0 0; }
+    .qr-card::after { bottom: 4mm; left: 4mm; border-width: 0 0 .8mm .8mm; border-radius: 0 0 0 3mm; }
+    .qr-safe {
+      width: 86mm;
+      height: 86mm;
+      margin: 0 auto;
+      padding: 6mm;
+      background: #fff;
+    }
+    .qr-safe img { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+    .scan-note { display: flex; align-items: center; justify-content: center; gap: 2mm; margin-top: 3.5mm; font-size: 4.1mm; font-weight: 700; }
+    .scan-icon { width: 7mm; height: 7mm; display: grid; place-items: center; border-radius: 50%; color: #fff; background: #188c5b; font-size: 3.5mm; }
+    .url { margin-top: 2.2mm; color: #7d8a84; font-size: 3mm; letter-spacing: .18mm; direction: ltr; unicode-bidi: isolate; }
+    .footer {
+      position: absolute;
+      right: 17mm;
+      left: 17mm;
+      bottom: 12mm;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6mm;
+      padding-top: 5mm;
+      border-top: .35mm solid #ded8ca;
+    }
+    .footer-item { display: flex; align-items: center; gap: 3mm; color: #52635d; font-size: 3.3mm; }
+    .footer-icon { width: 8mm; height: 8mm; display: grid; place-items: center; border-radius: 2.5mm; background: #e6ead3; color: #14372f; font-size: 3.8mm; }
+    .phone { direction: ltr; unicode-bidi: isolate; font-weight: 700; letter-spacing: .15mm; }
+    .small-mark { position: absolute; left: 5mm; bottom: 2mm; color: rgba(20,55,47,.22); font-size: 2.2mm; letter-spacing: .3mm; direction: ltr; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="top-shape"></div><div class="ring"></div>
+    <header class="brand">
+      <div class="logo-wrap"><img src="../logo.webp" alt="شعار Be-Ok"></div>
+      <div class="brand-copy"><strong>مجمع دمتم بخير الطبي بالطائف</strong><span>BE-OK MEDICAL COMPLEX</span></div>
+    </header>
+    <section class="content">
+      <div class="eyebrow">كل خدماتنا بين يديك</div>
+      <h1>امسح الباركود<br><span>واكتشف عنايتك</span></h1>
+      <p class="subtitle">لعرض قائمة الأسعار والموقع<br>بسهولة وسرعة من جوالك</p>
+      <div class="qr-card">
+        <div class="qr-safe"><img src="qr-price-list-hires.png" alt="باركود قائمة الأسعار والموقع"></div>
+        <div class="scan-note"><span class="scan-icon">⌁</span><span>وجّه كاميرا الجوال نحو الرمز</span></div>
+        <div class="url">be-ok.vercel.app</div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer-item"><span class="footer-icon">⌖</span><span>الطائف · حي شهار · طريق الشفا</span></div>
+      <div class="footer-item"><span class="footer-icon">☎</span><span class="phone">055 777 8287</span></div>
+    </footer>
+    <div class="small-mark">BE-OK · CARE & CONFIDENCE</div>
+  </main>
+</body>
+</html>
